@@ -192,6 +192,10 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 .form input{flex:1;min-width:0;background:none;border:0;color:var(--papel);font:inherit;padding:8px 14px;outline:none}
 .form input::placeholder{color:rgba(244,237,225,.45)}
 .form small{color:rgba(244,237,225,.55);font-size:12px}
+.form .campo .btn{flex:none}
+.form .estado{min-height:1.3em;font-size:14px;color:#8FD3B8}
+.form .estado.error{color:#F2B8A2}
+.form .estado.error a{text-decoration:underline}
 @media (min-width:900px){.aviso .caja{grid-template-columns:1fr 1fr;gap:56px;align-items:center}}
 
 footer{padding:22px 0 36px;color:var(--tinta3);font-size:12.5px}
@@ -217,7 +221,7 @@ footer a:hover{color:var(--tinta)}
       <p class="rotulo">Muy pronto en Android y iPhone</p>
       <h1>Primero el reel.<br>Después, <em>el libro.</em></h1>
       <p class="bajada">Los clásicos de siempre, presentados como hoy se mira todo: en videos cortos. Si uno te tienta, das vuelta la carta, leés la contratapa y elegís cuánto tiempo le dedicás.</p>
-      <div class="acciones"><a class="btn" href="mailto:contacto@classicshook.com?subject=Avisame%20cuando%20salga%20la%20app">Avisame cuando salga</a><a class="btn borde" href="#como">Cómo funciona</a></div>
+      <div class="acciones"><a class="btn" href="#avisame">Avisame cuando salga</a><a class="btn borde" href="#como">Cómo funciona</a></div>
       <p class="dato">50 clásicos para empezar · Los videos están hechos con IA</p>
     </div>
   </div>
@@ -310,10 +314,14 @@ footer a:hover{color:var(--tinta)}
   <div class="envase">
     <div class="caja">
       <div class="cabeza" style="margin:0"><p class="rotulo">Muy pronto</p><h2>Te escribimos <em>el día que salga.</em></h2><p class="bajada">Un solo correo. Nada de boletines.</p></div>
-      <div class="form">
-        <a class="btn" href="mailto:contacto@classicshook.com?subject=Avisame%20cuando%20salga%20la%20app">Avisame cuando salga</a>
+      <form class="form" id="formAviso" novalidate>
+        <label for="correo">Tu correo</label>
+        <div class="campo"><input id="correo" name="correo" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="tucorreo@ejemplo.com" required><button class="btn" type="submit" id="enviar">Avisame</button></div>
+        <div class="trampa" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="sitio">Sitio web</label><input id="sitio" name="sitio" type="text" tabindex="-1" autocomplete="off"></div>
+        <p class="estado" id="estadoAviso" role="status" aria-live="polite"></p>
+        <small>Usamos tu correo solo para avisarte del lanzamiento. Podés pedir que lo borremos. <a href="privacidad.html" style="text-decoration:underline">Privacidad</a></small>
         <small>Android y iPhone · Hecho en Balcarce, Argentina</small>
-      </div>
+      </form>
     </div>
   </div>
 </section>
@@ -326,6 +334,6 @@ footer a:hover{color:var(--tinta)}
   </div>
 </footer>
 
-<script src="portada.js?v=1" defer></script>
+<script src="portada.js?v=2" defer></script>
 </body>
 </html>
