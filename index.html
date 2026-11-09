@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preload" href="assets/fonts/Fraunces_600SemiBold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="assets/estilo.css?v=2">
+<link rel="stylesheet" href="assets/estilo.css?v=3">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"Organization","@id":"https://classicshook.com/#org","name":"Classics Hook","url":"https://classicshook.com/","logo":"https://classicshook.com/icono.svg","email":"contacto@classicshook.com","address":{"@type":"PostalAddress","addressLocality":"Balcarce","addressRegion":"Buenos Aires","addressCountry":"AR"}},
@@ -50,7 +50,7 @@
     <div class="portada-texto">
       <p class="rotulo">Clásicos con las palabras del autor</p>
       <h1>Tenés <em id="hn">45 minutos</em>.<br>Hay un clásico para eso.</h1>
-      <p class="bajada">Movelo y mirá cómo cambia la página: las versiones cortas no reescriben nada, eligen oraciones del libro.</p>
+      <p class="bajada">Movelo y mirá cómo cambia la página: las versiones cortas no reescriben al autor, eligen sus oraciones.</p>
       <div class="control-h">
         <div class="control-fila"><span class="rotulo">Tu tiempo</span><output id="hTiempo" for="rangoH">45 min</output></div>
         <input id="rangoH" type="range" min="10" max="360" step="1" value="45" aria-label="Minutos que tenés para leer">
@@ -72,7 +72,7 @@
           <span data-n="1" class="clave">—¡Señor Holmes! ¡Eran las pisadas de un sabueso gigantesco!</span>
         </p>
         <div class="hoja-pie">
-          <div><b id="vNombre">Relámpago</b><small id="vSub">Lo imprescindible</small></div>
+          <div><b id="vNombre">Relámpago</b><small id="vSub">Las escenas clave</small></div>
           <span class="chip" id="vTiempo">33 min</span>
         </div>
         <div class="medidor" aria-hidden="true"><i id="vBarra"></i></div>
@@ -123,7 +123,7 @@
       </div>
       <ol class="lista-pasos">
         <li class="paso on rev" data-n="1"><span class="num">01</span><div><h3>Mirás un reel</h3><p>Deslizás como en cualquier red, pero cada video es la puerta a un libro: un misterio, una escena, una frase del autor.</p></div></li>
-        <li class="paso rev" data-n="2"><span class="num">02</span><div><h3>Elegís cuánto tiempo tenés</h3><p>El libro completo o una lectura de la mitad, un cuarto o lo imprescindible. Todas con las frases originales, sin reescribir.</p></div></li>
+        <li class="paso rev" data-n="2"><span class="num">02</span><div><h3>Elegís cuánto tiempo tenés</h3><p>El libro completo, la mitad, un cuarto o solo las escenas clave. Todas con las frases del autor, sin reescribir.</p></div></li>
         <li class="paso rev" data-n="3"><span class="num">03</span><div><h3>Leés a tu ritmo</h3><p>En modo claro, sepia u oscuro, con el tamaño de letra que quieras. La app recuerda dónde quedaste.</p></div></li>
       </ol>
     </div>
@@ -134,8 +134,8 @@
   <div class="envase">
     <div class="cabeza rev">
       <p class="rotulo">Cada libro</p>
-      <h2>Cuatro tiempos y dos ayudas.</h2>
-      <p class="bajada">Las cuatro lecturas son del autor. La contratapa y el resumen son textos nuestros, revisados contra el libro, y la app siempre lo indica.</p>
+      <h2>Cuatro lecturas, más contratapa y resumen.</h2>
+      <p class="bajada">Las cuatro lecturas usan las frases del autor. La contratapa y el resumen son textos nuestros, revisados contra el libro, y la app siempre lo indica.</p>
     </div>
     <div class="grilla-libro">
       <div class="tarjeta versiones rev">
@@ -152,6 +152,15 @@
         <div class="tarjeta rev"><h3>Resumen</h3><p>La historia completa, con final, para quien quiere saber de qué se trata antes de leer.</p></div>
         <div class="tarjeta rev"><h3>Tu biblioteca</h3><p>Guardá libros y marcadores, y seguí donde quedaste. Sin registrarte.</p></div>
       </div>
+    </div>
+    <div class="metodo rev">
+      <h3>Cómo se acorta un libro sin romperlo</h3>
+      <ol>
+        <li><b>Escenas enteras, en su orden.</b> Se eligen por lo que pesan en la historia, no por ser famosas. Lo que el libro deja abierto queda abierto.</li>
+        <li><b>Las frases son del autor.</b> No se cambia ni se agrega una palabra. Si una frase es muy larga, solo se le quita lo que sobra.</li>
+        <li><b>Los saltos se ven.</b> Cuando se omite un tramo, una línea breve nuestra te ubica (quién, dónde, cuándo). La app la muestra con otra letra, para que sepas que no es del autor.</li>
+      </ol>
+      <p>Cada lectura se arma desde el libro completo y se revisa contra él. El Original nunca se toca.</p>
     </div>
   </div>
 </section>
@@ -177,6 +186,18 @@
     <div class="tapa t5"><small>Horacio Quiroga</small><b>Cuentos de amor, de locura y de muerte</b></div>
     <div class="tapa t6"><small>Galdós</small><b>Marianela</b></div>
   </div>
+  <div class="envase">
+    <details class="todos rev">
+      <summary>Ver los 50 títulos</summary>
+      <ul>
+        <li>Abel Sánchez<small>Unamuno</small></li><li>Cañas y barro<small>Blasco Ibáñez</small></li><li>Cándido<small>Voltaire</small></li><li>Comedia de equivocaciones<small>Shakespeare</small></li><li>Como gustéis<small>Shakespeare</small></li><li>Cuentos de amor, de locura y de muerte<small>Quiroga</small></li><li>David Copperfield<small>Dickens</small></li><li>Don Quijote de la Mancha<small>Cervantes</small></li><li>Edipo rey<small>Sófocles</small></li><li>El asno de oro<small>Apuleyo</small></li>
+        <li>El Buscón<small>Quevedo</small></li><li>El capital<small>Marx</small></li><li>El conde Lucanor<small>Don Juan Manuel</small></li><li>El Filibusterismo<small>Rizal</small></li><li>El hombre mediocre<small>Ingenieros</small></li><li>El mercader de Venecia<small>Shakespeare</small></li><li>El paraíso perdido<small>Milton</small></li><li>El príncipe<small>Maquiavelo</small></li><li>El sabueso de los Baskerville<small>Conan Doyle</small></li><li>Eneida<small>Virgilio</small></li>
+        <li>Fausto<small>Goethe</small></li><li>Hamlet<small>Shakespeare</small></li><li>Ilíada<small>Homero</small></li><li>Julio César<small>Shakespeare</small></li><li>La dama de las camelias<small>Dumas</small></li><li>La Divina Comedia<small>Dante</small></li><li>La isla del tesoro<small>Stevenson</small></li><li>La malquerida<small>Benavente</small></li><li>La vida es sueño<small>Calderón</small></li><li>La vuelta al mundo en ochenta días<small>Verne</small></li>
+        <li>Lazarillo de Tormes<small>Anónimo</small></li><li>Los miserables<small>Victor Hugo</small></li><li>Los pazos de Ulloa<small>Pardo Bazán</small></li><li>Luces de bohemia<small>Valle-Inclán</small></li><li>Macbeth<small>Shakespeare</small></li><li>Marianela<small>Galdós</small></li><li>Miau<small>Galdós</small></li><li>Niebla<small>Unamuno</small></li><li>Noli me tángere<small>Rizal</small></li><li>Novelas ejemplares<small>Cervantes</small></li>
+        <li>Odisea<small>Homero</small></li><li>Orgullo y prejuicio<small>Jane Austen</small></li><li>Otelo<small>Shakespeare</small></li><li>Peñas arriba<small>Pereda</small></li><li>Romeo y Julieta<small>Shakespeare</small></li><li>Tirano Banderas<small>Valle-Inclán</small></li><li>Tradiciones peruanas<small>Ricardo Palma</small></li><li>Trafalgar<small>Galdós</small></li><li>Viajes de Gulliver<small>Swift</small></li><li>Vidas paralelas<small>Plutarco</small></li>
+      </ul>
+    </details>
+  </div>
 </section>
 
 <section id="mision" class="fondo-2">
@@ -189,8 +210,8 @@
       <p class="bajada">Classics Hook es un proyecto independiente hecho en Balcarce, Argentina. Usamos obras de dominio público y les sumamos lo que hace falta para que vuelvan a leerse: reels y tiempo a medida. Cada libro dice de qué edición sale y quién la tradujo.</p>
       <dl class="cifras">
         <div><dt>50</dt><dd>clásicos en la primera colección</dd></div>
-        <div><dt>4</dt><dd>tiempos de lectura por libro</dd></div>
-        <div><dt>100 %</dt><dd>palabras del autor en las lecturas</dd></div>
+        <div><dt>4</dt><dd>lecturas por libro, según tu tiempo</dd></div>
+        <div><dt>1</dt><dd>edición citada en cada libro, con su traductor</dd></div>
       </dl>
     </div>
   </div>
@@ -203,7 +224,7 @@
       <h2>Lo que más nos preguntan.</h2>
     </div>
     <div class="faq rev">
-      <details><summary>¿Las lecturas cortas son resúmenes?</summary><p>No. Las lecturas tranquila, rápida y relámpago eligen oraciones del libro y las dejan tal cual: son palabras del autor, no nuestras. El Resumen y la Contratapa sí son textos nuestros, y la app lo indica.</p></details>
+      <details><summary>¿Las lecturas cortas son resúmenes?</summary><p>No. Las lecturas Tranquila, Rápida y Relámpago eligen escenas y frases del libro sin reescribirlas. Donde hay un salto, una línea breve nuestra te ubica, y la app la muestra con otra letra. El Resumen y la Contratapa sí son textos nuestros, y la app lo indica.</p></details>
       <details><summary>¿Cuesta algo?</summary><p>No. Leer en Classics Hook es gratis: no hay suscripción ni compras dentro de la app.</p></details>
       <details><summary>¿Tiene audio o voz?</summary><p>Por ahora no. Primero queremos que leer sea lo mejor posible; el audio queda para más adelante.</p></details>
       <details><summary>¿Los videos son reales?</summary><p>Son piezas ilustrativas creadas con herramientas de inteligencia artificial para invitarte al libro. Cada reel lo indica.</p></details>
@@ -239,6 +260,6 @@
     <div class="bajo"><span>© 2026 Classics Hook · Balcarce, Argentina</span><span>Textos de dominio público · videos generados con IA</span></div>
   </div>
 </footer>
-<script src="assets/app.js?v=2" defer></script>
+<script src="assets/app.js?v=3" defer></script>
 </body>
 </html>
