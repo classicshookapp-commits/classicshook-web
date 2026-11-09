@@ -58,7 +58,7 @@ h1{font-size:clamp(34px,4.6vw,60px)}
 h2{font-size:clamp(27px,3.3vw,42px)}
 h1 em,h2 em{font-style:italic;font-weight:400;color:var(--verde)}
 .bajada{color:var(--tinta2);font-size:clamp(15px,1.3vw,17px);max-width:32em}
-section{position:relative;padding:clamp(36px,6vw,80px) 0}
+section{position:relative;padding:clamp(36px,6vw,80px) 0;scroll-margin-top:var(--cab)}
 .cabeza{display:flex;flex-direction:column;gap:10px;margin-bottom:clamp(20px,3vw,32px)}
 .cabeza .rotulo{margin-bottom:2px}
 
@@ -94,7 +94,6 @@ nav .btn{padding:8px 14px;font-size:13px}
 .cara.frente .info{position:absolute;left:14px;right:14px;bottom:13px;color:#fff;display:flex;flex-direction:column;gap:3px}
 .cara.frente .info small{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.8;font-weight:500}
 .cara.frente .info h3{font-family:var(--serif);font-weight:600;font-size:clamp(17px,1.5vw,21px);letter-spacing:-.01em;line-height:1.08}
-.cara.frente .ia{position:absolute;top:11px;left:11px;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:#fff;background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.3);padding:4px 7px;border-radius:999px;backdrop-filter:blur(4px)}
 .cara.frente .girar{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(251,247,239,.94);display:grid;place-items:center;color:var(--verde)}
 .cara.frente .girar svg{width:15px;height:15px}
 .cara.dorso{transform:rotateY(180deg);background:var(--blanco);color:var(--tinta);padding:16px 15px 14px;display:flex;flex-direction:column;gap:7px;border:1px solid var(--line);
@@ -151,15 +150,38 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;heigh
 input[type=range]::-moz-range-track{height:4px;border-radius:4px;background:var(--line)}
 input[type=range]::-moz-range-progress{height:4px;border-radius:4px;background:var(--verde)}
 input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--verde)}
-.ficha{background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:5px;min-height:132px}
-.ficha .nombre{font-family:var(--serif);font-weight:600;font-size:23px;letter-spacing:-.01em}
-.ficha .nombre small{font-family:var(--sans);font-weight:500;font-size:12px;color:var(--nar);margin-left:10px;letter-spacing:.04em;text-transform:uppercase}
-.ficha p{color:var(--tinta2);font-size:14px}
-.ficha .marca-ia{font-size:12px;color:var(--tinta3);display:none}
-.ficha[data-v="story"] .marca-ia{display:block}
-.formas .nota{font-size:12.5px;color:var(--tinta3);margin-top:10px}
-@media (max-width:899px){.formas .cabeza{margin-bottom:10px}.formas .bajada{font-size:14px}.formas .cabeza h2{font-size:26px}}
-@media (min-width:900px){.formas .envase{grid-template-columns:1fr 1fr;gap:64px;align-items:center}.libro3d{height:340px}.tomo{width:200px;height:290px}.tomo .frente{padding:22px 16px}.tomo .frente h4{font-size:22px}.control{gap:14px}.ficha{padding:18px 20px;min-height:150px}.ficha p{font-size:14.5px}}
+.ficha{background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-height:132px}
+.ficha .nombre{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:-.01em;display:flex;align-items:baseline;flex-wrap:wrap;gap:0 10px}
+.ficha .nombre small{font-family:var(--sans);font-weight:500;font-size:12px;color:var(--nar);letter-spacing:.04em;text-transform:uppercase}
+.ficha p{color:var(--tinta2);font-size:13.5px;line-height:1.4}
+.ficha .plazo{color:var(--tinta);font-size:14.5px;line-height:1.4}
+.ficha .plazo b{font-weight:600;color:var(--verde);white-space:nowrap}
+.ficha .cifras{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px;padding-top:8px;border-top:1px solid var(--line)}
+.ficha .cifras b{display:block;font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.1;letter-spacing:-.01em}
+.ficha .cifras span{display:block;font-size:11px;color:var(--tinta3);line-height:1.25;margin-top:2px}
+.formas .nota{font-size:12.5px;color:var(--tinta3);margin-top:10px;line-height:1.45}
+/* calculadora: libro, minutos y días */
+.calc{display:flex;flex-direction:column;gap:9px;margin-bottom:14px}
+.calc .fila{display:grid;grid-template-columns:62px 1fr;gap:8px;align-items:center}
+.calc .et{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta3);font-weight:500}
+.calc .sel{position:relative}
+.calc select{appearance:none;-webkit-appearance:none;width:100%;height:38px;padding:0 34px 0 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.6);font:500 14px var(--sans);color:var(--tinta);cursor:pointer;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+.calc .sel::after{content:"";position:absolute;right:13px;top:50%;width:8px;height:8px;border-right:2px solid var(--verde);border-bottom:2px solid var(--verde);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.calc .chips{display:flex;gap:4px}
+.calc .chips button{flex:1 1 0;min-width:0;height:34px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.45);font-size:13px;font-weight:500;color:var(--tinta2);transition:background .2s,color .2s,border-color .2s;padding:0}
+.calc .chips button[aria-pressed=true]{background:var(--verde);border-color:var(--verde);color:#fff}
+.calc .chips button:hover:not([aria-pressed=true]){background:rgba(31,27,23,.06);color:var(--tinta)}
+.control .etiquetas.dos{grid-template-columns:1fr 1fr}
+.control .etiquetas.dos span:last-child{text-align:right}
+.libro-y-ficha{display:grid;gap:12px}
+@media (max-width:899px){
+  .formas{padding:30px 0 34px}.formas .cabeza{margin-bottom:12px;gap:6px}.formas .bajada{font-size:14px}.formas .cabeza h2{font-size:26px}
+  .libro-y-ficha{grid-template-columns:104px 1fr;align-items:center}
+  .libro3d{height:170px;perspective:600px}.tomo{width:92px;height:134px;transform:rotateY(-26deg) rotateX(4deg)}.tomo .frente{padding:12px 9px;border-radius:3px 7px 7px 3px}.tomo .frente .serie{font-size:7px;letter-spacing:.12em}.tomo .frente h4{font-size:12.5px}.tomo .frente .autor{font-size:8.5px;margin-top:3px}.tomo .fondo{border-radius:3px 7px 7px 3px}.tomo .sombra{bottom:-16px;height:14px}
+  .ficha{min-height:0}.ficha .nombre{font-size:19px}.ficha .cifras b{font-size:17px}
+}
+@media (max-width:359px){.libro-y-ficha{grid-template-columns:1fr}.libro3d{display:none}}
+@media (min-width:900px){.formas .envase{grid-template-columns:1fr 1fr;gap:64px;align-items:center}.libro3d{height:300px}.tomo{width:184px;height:264px}.tomo .frente{padding:22px 16px}.tomo .frente h4{font-size:21px}.control{gap:14px}.calc{gap:12px;margin-bottom:22px}.calc .fila{grid-template-columns:76px 1fr;gap:12px}.ficha{padding:18px 20px;min-height:150px}.ficha p{font-size:14.5px}.ficha .plazo{font-size:15.5px}}
 
 /* colección: tapas con imagen, título y autor compuestos por código */
 .estante{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px var(--gut) 18px;margin:0 calc(var(--gut) * -1);scrollbar-width:none}
@@ -210,7 +232,7 @@ footer a:hover{color:var(--tinta)}
 <header>
   <div class="envase">
     <a class="marca" href="#inicio"><img src="logo.svg" alt="" width="32" height="32">Classics Hook</a>
-    <nav><a href="#como">Cómo funciona</a><a href="#formas">Tres formas de leer</a><a href="#coleccion">Colección</a><a class="btn" href="#avisame">Avisame</a></nav>
+    <nav><a href="#como">Cómo funciona</a><a href="#formas">Cuánto te lleva</a><a href="#coleccion">Colección</a><a class="btn" href="#avisame">Avisame</a></nav>
   </div>
 </header>
 
@@ -220,35 +242,35 @@ footer a:hover{color:var(--tinta)}
     <div class="portada-texto">
       <p class="rotulo">Muy pronto en Android y iPhone</p>
       <h1>Primero el reel.<br>Después, <em>el libro.</em></h1>
-      <p class="bajada">Los clásicos de siempre, presentados como hoy se mira todo: en videos cortos. Si uno te tienta, das vuelta la carta, leés la contratapa y elegís cuánto tiempo le dedicás.</p>
+      <p class="bajada">Los clásicos de siempre, contados como hoy se mira todo: en videos cortos. Si uno te tienta, das vuelta la carta, leés la contratapa y decidís cuánto tiempo le das.</p>
       <div class="acciones"><a class="btn" href="#avisame">Avisame cuando salga</a><a class="btn borde" href="#como">Cómo funciona</a></div>
-      <p class="dato">50 clásicos para empezar · Los videos están hechos con IA</p>
+      <p class="dato">50 clásicos para empezar · Textos de dominio público</p>
     </div>
   </div>
   <div class="tira-wrap">
     <div class="tira" id="tira" tabindex="0" aria-label="Reels de la colección. Deslizá para ver más; tocá una carta para dar vuelta y leer la contratapa.">
       <div class="carta"><div class="cuerpo">
-        <div class="cara frente"><video src="media/macbeth.mp4" poster="media/macbeth.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="ia">Hecho con IA</span><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 1 de 4</small><h3>Macbeth</h3></div></div>
+        <div class="cara frente"><video src="media/macbeth.mp4" poster="media/macbeth.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 1 de 4</small><h3>Macbeth</h3></div></div>
         <div class="cara dorso"><span class="rotulo">Contratapa</span><h3>Macbeth</h3><p class="autor">William Shakespeare</p><p class="txt">Macbeth vuelve victorioso de una batalla cuando, en un páramo, tres brujas lo saludan con títulos que todavía no tiene y le anuncian una corona. Poco después, una de las predicciones empieza a cumplirse. Desde ese momento la ambición se mezcla con el miedo.</p><div class="abajo"><small>Para leer en</small><span class="on">Original</span><span>Story</span></div></div>
       </div></div>
       <div class="carta"><div class="cuerpo">
-        <div class="cara frente"><video src="media/isla.mp4" poster="media/isla.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="ia">Hecho con IA</span><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 2 de 4</small><h3>La isla del tesoro</h3></div></div>
+        <div class="cara frente"><video src="media/isla.mp4" poster="media/isla.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 2 de 4</small><h3>La isla del tesoro</h3></div></div>
         <div class="cara dorso"><span class="rotulo">Contratapa</span><h3>La isla del tesoro</h3><p class="autor">Robert Louis Stevenson</p><p class="txt">Un viejo marino de piel curtida y una cicatriz de sable llega a la posada del «Almirante Benbow» y se queda. Bebe ron, canta canciones de piratas y espera a un marino con una sola pierna. Mientras el miedo se instala en la casa, un cofre que nadie vio abierto guarda un secreto.</p><div class="abajo"><small>Para leer en</small><span>Original</span><span class="on">Lite</span><span>Story</span></div></div>
       </div></div>
       <div class="carta"><div class="cuerpo">
-        <div class="cara frente"><video src="media/quijote.mp4" poster="media/quijote.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="ia">Hecho con IA</span><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 1 de 4</small><h3>Don Quijote de la Mancha</h3></div></div>
+        <div class="cara frente"><video src="media/quijote.mp4" poster="media/quijote.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 1 de 4</small><h3>Don Quijote de la Mancha</h3></div></div>
         <div class="cara dorso"><span class="rotulo">Contratapa</span><h3>Don Quijote de la Mancha</h3><p class="autor">Miguel de Cervantes</p><p class="txt">Un hidalgo de casi cincuenta años, flaco y madrugador, vive en un lugar de la Mancha con su ama y su sobrina. Lee libros de caballerías de noche y de día, tanto que se le seca el cerebro y cree que todo lo que leyó es verdad. Lo acompaña un labrador vecino, Sancho Panza.</p><div class="abajo"><small>Para leer en</small><span class="on">Original</span><span>Lite</span><span>Story</span></div></div>
       </div></div>
       <div class="carta"><div class="cuerpo">
-        <div class="cara frente"><video src="media/hamlet.mp4" poster="media/hamlet.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="ia">Hecho con IA</span><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 1 de 4</small><h3>Hamlet</h3></div></div>
+        <div class="cara frente"><video src="media/hamlet.mp4" poster="media/hamlet.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 1 de 4</small><h3>Hamlet</h3></div></div>
         <div class="cara dorso"><span class="rotulo">Contratapa</span><h3>Hamlet</h3><p class="autor">William Shakespeare</p><p class="txt">Un fantasma recorre de noche las almenas de un castillo danés, y solo un hijo se anima a escucharlo. Lo que ese padre muerto tiene para decirle empuja a Hamlet a fingirse loco, a desconfiar de todos los que lo rodean y a dudar, capítulo tras capítulo, si vale más actuar o quedarse quieto.</p><div class="abajo"><small>Para leer en</small><span>Original</span><span class="on">Story</span></div></div>
       </div></div>
       <div class="carta"><div class="cuerpo">
-        <div class="cara frente"><video src="media/romeo.mp4" poster="media/romeo.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="ia">Hecho con IA</span><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 1 de 4</small><h3>Romeo y Julieta</h3></div></div>
+        <div class="cara frente"><video src="media/romeo.mp4" poster="media/romeo.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 1 de 4</small><h3>Romeo y Julieta</h3></div></div>
         <div class="cara dorso"><span class="rotulo">Contratapa</span><h3>Romeo y Julieta</h3><p class="autor">William Shakespeare</p><p class="txt">En Verona, dos familias se odian desde hace años, y la pelea llega hasta los criados en plena plaza. Romeo, un Montesco, sufre por un amor que no lo corresponde y huye de la luz del día. Hasta que una noche hay fiesta en casa de los Capuleto y conoce a Julieta, que todavía no cumplió quince años.</p><div class="abajo"><small>Para leer en</small><span class="on">Original</span><span>Story</span></div></div>
       </div></div>
       <div class="carta"><div class="cuerpo">
-        <div class="cara frente"><video src="media/vuelta.mp4" poster="media/vuelta.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="ia">Hecho con IA</span><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 1 de 4</small><h3>La vuelta al mundo en ochenta días</h3></div></div>
+        <div class="cara frente"><video src="media/vuelta.mp4" poster="media/vuelta.jpg" muted loop playsinline preload="metadata"></video><div class="velo"></div><span class="girar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2M18 3v3h-3M6 21v-3h3"/></svg></span><div class="info"><small>Reel 1 de 4</small><h3>La vuelta al mundo en ochenta días</h3></div></div>
         <div class="cara dorso"><span class="rotulo">Contratapa</span><h3>La vuelta al mundo en ochenta días</h3><p class="autor">Julio Verne</p><p class="txt">Londres, mil ochocientos setenta y dos. Phileas Fogg es un caballero tan exacto que despide a un criado porque le llevó el agua de afeitar un grado más fría. Una tarde, en su club, apuesta veinte mil libras a que da la vuelta al mundo en ochenta días.</p><div class="abajo"><small>Para leer en</small><span>Original</span><span>Lite</span><span class="on">Story</span></div></div>
       </div></div>
     </div>
@@ -260,37 +282,45 @@ footer a:hover{color:var(--tinta)}
   <div class="envase">
     <div class="cabeza"><p class="rotulo">Cómo funciona</p><h2>Tres pasos, <em>sin apuro.</em></h2></div>
     <div class="receta">
-      <div><span class="n">1</span><div><h3>Mirás un reel</h3><p>Cada libro tiene cuatro. Son cortos, verticales y te invitan a entrar. Si uno te deja con ganas, tocás.</p></div></div>
-      <div><span class="n">2</span><div><h3>Leés la contratapa</h3><p>Un texto breve, sin spoilers, como el de atrás de un libro. Para decidir con calma.</p></div></div>
-      <div><span class="n">3</span><div><h3>Elegís cuánto tiempo le dedicás</h3><p>Original, Lite o Story: el libro entero, cerca de la mitad, o la historia completa en unos minutos. Después, a leer.</p></div></div>
+      <div><span class="n">1</span><div><h3>Te cruzás con un reel</h3><p>Cada libro tiene cuatro, cortos y verticales. Pasás de largo o te quedás. Si uno te tienta, tocás.</p></div></div>
+      <div><span class="n">2</span><div><h3>Leés la contratapa</h3><p>Das vuelta la carta y aparece un texto breve, sin spoilers, como el de atrás de un libro. Para decidir con calma.</p></div></div>
+      <div><span class="n">3</span><div><h3>Decís cuánto tiempo tenés</h3><p>Tus minutos, tus días. Elegís Original, Lite o Story y la app te dice cuánto te lleva y cuándo lo terminás.</p></div></div>
     </div>
   </div>
 </section>
 
 <section class="formas" id="formas">
   <div class="envase">
-    <div>
-      <div class="cabeza"><p class="rotulo">Tres formas de leer</p><h2>¿Cuánto libro <em>querés hoy?</em></h2><p class="bajada">Movelo y mirá cómo cambia el grosor. Las tres formas cuentan la misma historia; cambia cuánto del autor leés.</p></div>
+    <div class="col-calc">
+      <div class="cabeza"><p class="rotulo">Calculadora de lectura</p><h2>¿Cuánto te lleva <em>un clásico?</em></h2><p class="bajada">Elegí un libro, tus minutos y tus días. Movelo entre Story, Lite y Original y mirá cuándo lo terminás.</p></div>
+      <div class="calc">
+        <div class="fila"><label class="et" for="cLibro">Libro</label><div class="sel"><select id="cLibro"></select></div></div>
+        <div class="fila"><span class="et" id="etMin">Minutos</span><div class="chips" id="cMin" role="group" aria-labelledby="etMin"></div></div>
+        <div class="fila"><span class="et" id="etDias">Días</span><div class="chips dias" id="cDias" role="group" aria-labelledby="etDias"></div></div>
+      </div>
       <div class="control">
         <input type="range" id="grosor" min="0" max="2" step="1" value="2" aria-label="Forma de leer: Story, Lite u Original" aria-valuetext="Original" style="--pct:100%">
         <div class="etiquetas" id="etq"><span>Story</span><span>Lite</span><span class="on">Original</span></div>
       </div>
     </div>
-    <div>
-      <div class="libro3d" aria-hidden="true">
-        <div class="tomo" id="tomo" style="--g:40">
-          <div class="sombra"></div>
-          <div class="fondo"></div>
-          <div class="hojas"></div>
-          <div class="frente"><span class="serie">Classics Hook · 01</span><div><h4>Don Quijote de la Mancha</h4><p class="autor">Miguel de Cervantes</p></div></div>
+    <div class="col-libro">
+      <div class="libro-y-ficha">
+        <div class="libro3d" aria-hidden="true">
+          <div class="tomo" id="tomo" style="--g:40">
+            <div class="sombra"></div>
+            <div class="fondo"></div>
+            <div class="hojas"></div>
+            <div class="frente"><span class="serie">Classics Hook</span><div><h4 id="tTitulo">Don Quijote de la Mancha</h4><p class="autor" id="tAutor">Miguel de Cervantes</p></div></div>
+          </div>
+        </div>
+        <div class="ficha" id="ficha" data-v="original" aria-live="polite">
+          <div class="nombre" id="fNombre">Original<small id="fTiempo"></small></div>
+          <p id="fDesc">El libro completo, tal como lo escribió el autor.</p>
+          <p class="plazo" id="fPlazo"></p>
+          <div class="cifras"><div><b id="fTotal">—</b><span>en total</span></div><div><b id="fDias">—</b><span id="fDiasEt">días de lectura</span></div><div><b id="fSemanas">—</b><span id="fSemanasEt">semanas</span></div></div>
         </div>
       </div>
-      <div class="ficha" id="ficha" data-v="original" aria-live="polite">
-        <div class="nombre" id="fNombre">Original<small id="fTiempo">Todo el libro</small></div>
-        <p id="fDesc">El libro completo, tal como lo escribió el autor. Para cuando tenés tiempo y ganas de todo.</p>
-        <span class="marca-ia">Escrita con inteligencia artificial y revisada por nosotros. La app lo indica siempre.</span>
-      </div>
-      <p class="nota">Lite está en novelas y ensayos. El teatro, la poesía y los cuentos van de Original a Story.</p>
+      <p class="nota">Cuenta aproximada, desde hoy, a 170–220 palabras por minuto según el libro. Lite está en novelas y ensayos; el teatro, la poesía y los cuentos van de Original a Story.</p>
     </div>
   </div>
 </section>
@@ -306,7 +336,7 @@ footer a:hover{color:var(--tinta)}
       <div class="tapa"><img src="media/tapa_lazarillo.jpg" alt=""><div class="txt"><span class="serie">Clásicos · 05</span><div><h3>Lazarillo de Tormes</h3><p class="autor">Anónimo</p></div></div></div>
       <div class="tapa"><img src="media/tapa_dante.jpg" alt=""><div class="txt"><span class="serie">Clásicos · 06</span><div><h3>La Divina Comedia</h3><p class="autor">Dante Alighieri</p></div></div></div>
     </div>
-    <p class="nota"><b>50 libros</b> en la primera colección · <b>4 reels</b> por libro · Textos de dominio público · Imágenes y videos hechos con IA</p>
+    <p class="nota"><b>50 libros</b> en la primera colección · <b>4 reels</b> por libro · Textos de dominio público</p>
   </div>
 </section>
 
@@ -329,11 +359,11 @@ footer a:hover{color:var(--tinta)}
 
 <footer>
   <div class="envase">
-    <span>© 2026 Classics Hook · Balcarce, Argentina · Textos de dominio público · Reels hechos con IA</span>
+    <span>© 2026 Classics Hook · Balcarce, Argentina · Textos de dominio público</span>
     <div class="fila"><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos de uso</a><a href="cookies.html">Cookies</a><a href="derechos-de-autor.html">Derechos de autor</a><a href="creditos.html">Créditos y licencias</a><a href="soporte.html">Ayuda y soporte</a></div>
   </div>
 </footer>
 
-<script src="portada.js?v=2" defer></script>
+<script src="portada.js?v=3" defer></script>
 </body>
 </html>
