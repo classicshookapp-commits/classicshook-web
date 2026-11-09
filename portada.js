@@ -27,3 +27,24 @@
     r.style.setProperty('--pct',(r.value*50)+'%');r.setAttribute('aria-valuetext',d.n);etq.forEach(function(s,i){s.classList.toggle('on',i===+r.value)});}
   r.addEventListener('input',aplica);aplica();
 })();
+
+// lista de espera
+(function(){
+  var f=document.getElementById('formAviso');if(!f||!window.fetch)return;
+  var est=document.getElementById('estadoAviso'),b=document.getElementById('enviar'),inp=document.getElementById('correo');
+  function msg(t,err){est.className='estado'+(err?' error':'');est.textContent=t}
+  function falla(){est.className='estado error';est.innerHTML='No pudimos guardarlo: escribinos a <a href="mailto:contacto@classicshook.com">contacto@classicshook.com</a>.'}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var c=inp.value.trim();
+    if(!c||!inp.checkValidity()){msg('Revisá el correo, parece incompleto.',true);return}
+    b.disabled=true;msg('Enviando…');
+    fetch('/api/avisame',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({correo:c,sitio:document.getElementById('sitio').value})})
+      .then(function(r){return r.json().then(function(j){return {s:r.status,j:j}})})
+      .then(function(x){
+        if(x.j&&x.j.ok){msg('Listo, te avisamos cuando salga.');f.reset();inp.disabled=true}
+        else if(x.s===400){b.disabled=false;msg('Revisá el correo, parece incompleto.',true)}
+        else{b.disabled=false;falla()}
+      }).catch(function(){b.disabled=false;falla()});
+  });
+})();
