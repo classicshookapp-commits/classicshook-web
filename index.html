@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Classics Hook · Los clásicos, a tu tiempo</title>
-<meta name="description" content="Clásicos de la literatura, gratis y con las palabras del autor. Mirás un reel, elegís cuánto tiempo tenés y leés.">
+<meta name="description" content="Clásicos de la literatura con las palabras del autor. Mirás un reel, elegís cuánto tiempo tenés y leés.">
 <link rel="canonical" href="https://classicshook.com/">
-<meta name="theme-color" content="#0B0A1A" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#F7F6FD" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12110F" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F6F1E3" media="(prefers-color-scheme: light)">
 <meta name="color-scheme" content="dark light">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Classics Hook">
 <meta property="og:title" content="Classics Hook · Los clásicos, a tu tiempo">
-<meta property="og:description" content="Mirá un reel, elegí cuánto tiempo tenés y leé un clásico con las palabras del autor. Gratis.">
+<meta property="og:description" content="Mirá un reel, elegí cuánto tiempo tenés y leé un clásico con las palabras del autor.">
 <meta property="og:url" content="https://classicshook.com/">
 <meta property="og:image" content="https://classicshook.com/assets/img/og.png">
 <meta property="og:locale" content="es_AR">
@@ -20,7 +20,7 @@
 <link rel="icon" href="icono.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="preload" href="assets/fonts/IBMPlexSans_600SemiBold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/Fraunces_600SemiBold.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="assets/estilo.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -32,162 +32,182 @@
 <body>
 <a class="salto" href="#contenido">Saltar al contenido</a>
 <div id="progreso" aria-hidden="true"></div>
-<div id="luz" aria-hidden="true"></div>
 
 <header class="nav">
   <div class="envase">
-    <a class="marca" href="/" aria-label="Classics Hook, inicio"><img src="icono.svg" alt="" width="36" height="36">Classics <span>Hook</span></a>
+    <a class="marca" href="/" aria-label="Classics Hook, inicio"><img src="icono.svg" alt="" width="30" height="30">Classics <span>Hook</span></a>
     <nav aria-label="Principal">
-      <a href="#como">Cómo funciona</a><a href="#tiempo">Tu tiempo</a><a href="#coleccion">Colección</a><a href="#preguntas">Preguntas</a>
-      <a class="btn" href="#avisame">Avisame</a>
+      <a href="#como">Cómo funciona</a><a href="#tiempo">Cada libro</a><a href="#coleccion">Colección</a><a href="#preguntas">Preguntas</a>
+      <a class="btn chico" href="#avisame">Avisame</a>
     </nav>
   </div>
 </header>
 
 <main id="contenido">
-<section class="portada" id="inicio" style="padding-bottom:20px">
-  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div><div class="grano" aria-hidden="true"></div>
+<section class="portada" id="inicio">
+  <div class="resplandor" aria-hidden="true"></div>
   <div class="envase">
-    <div>
-      <span class="pastilla"><b>GRATIS</b> Clásicos con las palabras del autor</span>
-      <h1 data-palabras>Tenés <span class="grad" id="hn">45 minutos.</span> Hay un clásico para eso.</h1>
-      <p class="grande">Movelo y mirá qué versión te entra. Un reel te abre la puerta, vos elegís cuánto leer.</p>
+    <div class="portada-texto">
+      <p class="rotulo">Clásicos con las palabras del autor</p>
+      <h1>Tenés <em id="hn">45 minutos</em>.<br>Hay un clásico para eso.</h1>
+      <p class="bajada">Movelo y mirá cómo cambia la página: las versiones cortas no reescriben nada, eligen oraciones del libro.</p>
       <div class="control-h">
+        <div class="control-fila"><span class="rotulo">Tu tiempo</span><output id="hTiempo" for="rangoH">45 min</output></div>
         <input id="rangoH" type="range" min="10" max="360" step="1" value="45" aria-label="Minutos que tenés para leer">
         <div class="marcas" aria-hidden="true"><span>10 min</span><span>3 h</span><span>6 h</span></div>
       </div>
+    </div>
+
+    <figure class="libro-vivo" id="vivo" data-nivel="1" aria-label="Ejemplo: un fragmento de El sabueso de los Baskerville en la versión elegida">
+      <div class="pila">
+      <div class="hojas" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="hoja">
+        <div class="hoja-cab"><span>El sabueso de los Baskerville</span><span>Cap. II</span></div>
+        <p class="texto-libro">
+          <span data-n="3">Sir Carlos estaba tendido boca abajo, con los brazos abiertos, los dedos enterrados en la arena…</span>
+          <span data-n="4">Su cuerpo no presentaba, sin embargo, lesión de ninguna clase.</span>
+          <span data-n="2">Pero Barrymore hizo una declaración errónea en el sumario; dijo que junto al cadáver no había huellas en el suelo.</span>
+          <span data-n="3">Él no vio ninguna, es cierto; pero yo sí… a corta distancia, muy frescas y muy claras.</span>
+          <span data-n="4">—¿Pisadas? —Pisadas. —¿De hombre o mujer?</span>
+          <span data-n="1" class="clave">—¡Señor Holmes! ¡Eran las pisadas de un sabueso gigantesco!</span>
+        </p>
+        <div class="hoja-pie">
+          <div><b id="vNombre">Relámpago</b><small id="vSub">Lo imprescindible</small></div>
+          <span class="chip" id="vTiempo">33 min</span>
+        </div>
+        <div class="medidor" aria-hidden="true"><i id="vBarra"></i></div>
+      </div>
+      </div>
+      <figcaption class="selector-v" role="group" aria-label="Elegir versión">
+        <button type="button" data-min="33">Relámpago<small>33 min</small></button>
+        <button type="button" data-min="78">Rápida<small>1 h 18</small></button>
+        <button type="button" data-min="156">Tranquila<small>2 h 36</small></button>
+        <button type="button" data-min="311">Original<small>5 h 11</small></button>
+      </figcaption>
+    </figure>
+    <div class="portada-acciones">
       <div class="acciones" id="avisame">
-        <a class="btn" href="mailto:contacto@classicshook.com?subject=Avisame%20cuando%20salga%20la%20app">Avisame cuando salga →</a>
-        <a class="btn vidrio" href="#como">Ver cómo funciona</a>
+        <a class="btn" href="mailto:contacto@classicshook.com?subject=Avisame%20cuando%20salga%20la%20app">Avisame cuando salga</a>
+        <a class="btn borde" href="#como">Cómo funciona</a>
       </div>
       <p class="dato">Muy pronto en Android y iPhone · primera colección de 50 libros.</p>
     </div>
-    <div class="escena-t">
-      <div class="vivo" id="vivo" style="--abre:10;--pc:10.5">
-        <div class="c y"></div><div class="c z"></div>
-        <div class="c r">
-          <small>El sabueso de los Baskerville</small>
-          <div><div class="v-nombre" id="vNombre">Relámpago</div><div class="v-sub" id="vSub">Lo imprescindible, con las palabras del autor</div></div>
-          <div class="v-pie"><div class="anillo"><b id="vPc">11%</b></div><span class="chip" id="vTiempo">33 min</span></div>
-        </div>
-      </div>
-      <div class="selector-v" role="group" aria-label="Elegir versión">
-        <button type="button" data-min="33">Relámpago <small>33 min</small></button>
-        <button type="button" data-min="78">Rápida <small>1 h 18</small></button>
-        <button type="button" data-min="156">Tranquila <small>2 h 36</small></button>
-        <button type="button" data-min="311">Original <small>5 h 11</small></button>
-      </div>
-    </div>
   </div>
-  <div class="cinta" aria-hidden="true"><div>
-    <span>Don Quijote de la Mancha</span><span>El sabueso de los Baskerville</span><span>Odisea</span><span>Hamlet</span><span>Orgullo y prejuicio</span><span>Los miserables</span><span>La isla del tesoro</span><span>Lazarillo de Tormes</span><span>La vida es sueño</span><span>Marianela</span>
-    <span>Don Quijote de la Mancha</span><span>El sabueso de los Baskerville</span><span>Odisea</span><span>Hamlet</span><span>Orgullo y prejuicio</span><span>Los miserables</span><span>La isla del tesoro</span><span>Lazarillo de Tormes</span><span>La vida es sueño</span><span>Marianela</span>
-  </div></div>
 </section>
+
+<div class="cinta" aria-hidden="true"><div>
+  <span>Don Quijote de la Mancha</span><span>El sabueso de los Baskerville</span><span>Odisea</span><span>Hamlet</span><span>Orgullo y prejuicio</span><span>Los miserables</span><span>La isla del tesoro</span><span>Lazarillo de Tormes</span><span>La vida es sueño</span><span>Marianela</span>
+  <span>Don Quijote de la Mancha</span><span>El sabueso de los Baskerville</span><span>Odisea</span><span>Hamlet</span><span>Orgullo y prejuicio</span><span>Los miserables</span><span>La isla del tesoro</span><span>Lazarillo de Tormes</span><span>La vida es sueño</span><span>Marianela</span>
+</div></div>
 
 <section id="como">
   <div class="envase">
-    <p class="rotulo rev">Cómo funciona</p>
-    <h2 class="rev">Mirá. Elegí tu tiempo. Leé.</h2>
+    <div class="cabeza rev">
+      <p class="rotulo">Cómo funciona</p>
+      <h2>Mirá. Elegí tu tiempo. Leé.</h2>
+    </div>
     <div class="pasos" data-paso="1">
       <div class="fijo" aria-hidden="true">
         <div class="telefono"><div class="pantalla">
-          <div class="fondo"></div>
-          <div class="capa s1"><span class="t">Reels</span><div class="mini-reel"><b>«Eran las huellas de un sabueso gigantesco.»</b></div><div class="opc"><span>El sabueso de los Baskerville</span><small>33 min</small></div></div>
+          <div class="capa s1"><span class="t">Reels</span><div class="mini-reel"><b>«Eran las pisadas de un sabueso gigantesco.»</b></div><div class="opc"><span>El sabueso de los Baskerville</span><small>Leer</small></div></div>
           <div class="capa s2"><span class="t">¿Cuánto tiempo tenés?</span>
             <div class="opc"><span>Relámpago</span><small>33 min</small></div>
             <div class="opc sel"><span>Rápida</span><small>1 h 18</small></div>
             <div class="opc"><span>Tranquila</span><small>2 h 36</small></div>
             <div class="opc"><span>Original</span><small>5 h 11</small></div></div>
-          <div class="capa s3"><span class="t">Leyendo · modo sepia</span>
-            <div class="lector"><span>Eran</span> <span>las</span> <span>huellas</span> <span>de</span> <span>un</span> <span>sabueso</span> <span>gigantesco.</span></div>
-            <div class="lineas"><i style="width:92%"></i><i style="width:76%"></i><i style="width:84%"></i></div>
-            <div class="opc" style="margin-top:auto"><span>Capítulo 3</span><small>seguís donde quedaste</small></div></div>
+          <div class="capa s3 sepia"><span class="t">Capítulo 2 · sepia</span>
+            <div class="lector"><span>Eran</span> <span>las</span> <span>pisadas</span> <span>de</span> <span>un</span> <span>sabueso</span> <span>gigantesco.</span></div>
+            <div class="lineas"><i style="width:92%"></i><i style="width:76%"></i><i style="width:84%"></i><i style="width:60%"></i></div>
+            <div class="opc" style="margin-top:auto"><span>Seguís donde quedaste</span><small>41 %</small></div></div>
         </div></div>
       </div>
-      <div class="lista-pasos">
-        <div class="paso on" data-n="1"><div class="gran">1</div><h3>Mirás un reel</h3><p>Deslizás como en cualquier red, pero cada video es la puerta a un libro: un misterio, una escena, una frase del autor.</p></div>
-        <div class="paso" data-n="2"><div class="gran">2</div><h3>Elegís cuánto tiempo tenés</h3><p>El libro completo o una lectura de la mitad, un cuarto o lo imprescindible. Todas con las frases originales, sin reescribir.</p></div>
-        <div class="paso" data-n="3"><div class="gran">3</div><h3>Leés a tu ritmo</h3><p>En modo claro, sepia u oscuro, con el tamaño de letra que quieras. La app recuerda dónde quedaste y te acompaña con una racha diaria.</p></div>
-      </div>
+      <ol class="lista-pasos">
+        <li class="paso on rev" data-n="1"><span class="num">01</span><div><h3>Mirás un reel</h3><p>Deslizás como en cualquier red, pero cada video es la puerta a un libro: un misterio, una escena, una frase del autor.</p></div></li>
+        <li class="paso rev" data-n="2"><span class="num">02</span><div><h3>Elegís cuánto tiempo tenés</h3><p>El libro completo o una lectura de la mitad, un cuarto o lo imprescindible. Todas con las frases originales, sin reescribir.</p></div></li>
+        <li class="paso rev" data-n="3"><span class="num">03</span><div><h3>Leés a tu ritmo</h3><p>En modo claro, sepia u oscuro, con el tamaño de letra que quieras. La app recuerda dónde quedaste.</p></div></li>
+      </ol>
     </div>
   </div>
 </section>
 
-<section id="tiempo">
+<section id="tiempo" class="fondo-2">
   <div class="envase">
-    <p class="rotulo rev">Cada libro, seis formas</p>
-    <h2 class="rev">¿Cuánto tiempo tenés hoy?</h2>
-    <p class="grande rev">Movelo y mirá qué versión de <b>El sabueso de los Baskerville</b> te entra. Las lecturas recortadas eligen oraciones del autor: nunca las reescriben.</p>
-    <div class="tiempo-caja">
-      <div class="control rev">
-        <div class="num-grande" id="minutos" aria-live="polite">45<small>min</small></div>
-        <input id="rango" type="range" min="10" max="360" step="1" value="45" aria-label="Minutos disponibles para leer">
-        <div class="marcas" aria-hidden="true"><span>10 min</span><span>3 h</span><span>6 h</span></div>
-        <p class="veredicto" id="veredicto" aria-live="polite"></p>
-      </div>
-      <div class="tarjeta libro-caja rev" style="--d:2">
+    <div class="cabeza rev">
+      <p class="rotulo">Cada libro</p>
+      <h2>Cuatro tiempos y dos ayudas.</h2>
+      <p class="bajada">Las cuatro lecturas son del autor. La contratapa y el resumen son textos nuestros, revisados contra el libro, y la app siempre lo indica.</p>
+    </div>
+    <div class="grilla-libro">
+      <div class="tarjeta versiones rev">
         <div class="titulo">El sabueso de los Baskerville</div><div class="autor">Arthur Conan Doyle</div>
-        <div class="op" data-min="33" data-nombre="Lectura relámpago"><div><b>Lectura relámpago</b><small>Lo imprescindible</small></div><span class="t">33 min</span><div class="bar"><i style="--w:10.5%"></i></div></div>
-        <div class="op" data-min="78" data-nombre="Lectura rápida"><div><b>Lectura rápida</b><small>Un cuarto, sin perder la trama</small></div><span class="t">1 h 18</span><div class="bar"><i style="--w:25%"></i></div></div>
-        <div class="op" data-min="156" data-nombre="Lectura tranquila"><div><b>Lectura tranquila</b><small>La mitad, con las palabras del autor</small></div><span class="t">2 h 36</span><div class="bar"><i style="--w:50%"></i></div></div>
-        <div class="op" data-min="311" data-nombre="Original"><div><b>Original</b><small>El libro completo</small></div><span class="t">5 h 11</span><div class="bar"><i style="--w:100%"></i></div></div>
+        <ul>
+          <li><span>Relámpago</span><i style="--w:10.5%"></i><small>33 min</small></li>
+          <li><span>Rápida</span><i style="--w:25%"></i><small>1 h 18</small></li>
+          <li><span>Tranquila</span><i style="--w:50%"></i><small>2 h 36</small></li>
+          <li><span>Original</span><i style="--w:100%"></i><small>5 h 11</small></li>
+        </ul>
+      </div>
+      <div class="extras">
+        <div class="tarjeta rev"><h3>Contratapa</h3><p>Un párrafo sin spoilers para decidir si te tienta, como al dar vuelta un libro en la librería.</p></div>
+        <div class="tarjeta rev"><h3>Resumen</h3><p>La historia completa, con final, para quien quiere saber de qué se trata antes de leer.</p></div>
+        <div class="tarjeta rev"><h3>Tu biblioteca</h3><p>Guardá libros y marcadores, y seguí donde quedaste. Sin registrarte.</p></div>
       </div>
     </div>
-    <div class="extras">
-      <div class="tarjeta rev"><h3>Contratapa <span class="etq">sin spoilers</span></h3><p>Un párrafo para decidir si te tienta, como el que leés al dar vuelta un libro en la librería.</p></div>
-      <div class="tarjeta rev" style="--d:1"><h3>Resumen <span class="etq">con final</span></h3><p>La historia completa contada por un editor, para quien quiere saber de qué se trata. A veces es el empujón para leer el original.</p></div>
-      <div class="tarjeta rev" style="--d:2"><h3>Tu biblioteca <span class="etq">sin cuenta</span></h3><p>Guardá libros y marcadores, y seguí donde quedaste. Todo queda en tu teléfono: no te pedimos registrarte.</p></div>
-    </div>
-    <p class="dato rev" style="margin-top:22px">La contratapa y el resumen son textos nuestros, revisados contra el libro. Todo lo demás es del autor.</p>
   </div>
 </section>
 
-<section id="coleccion" style="padding-bottom:40px">
+<section id="coleccion">
   <div class="envase">
-    <p class="rotulo rev">Primera colección · 50 libros</p>
-    <h2 class="rev">Para empezar, cincuenta clásicos.</h2>
-    <div class="estante" tabindex="0" aria-label="Algunos de los libros de la primera colección">
-      <div class="libro3d" style="--c1:#3F8F5A;--c2:#1E4A3A"><small>Cervantes</small><b>Don Quijote de la Mancha</b></div>
-      <div class="libro3d" style="--c1:#C2306F;--c2:#5B1A8F"><small>Conan Doyle</small><b>El sabueso de los Baskerville</b></div>
-      <div class="libro3d" style="--c1:#2D6BE0;--c2:#16296B"><small>Homero</small><b>Odisea</b></div>
-      <div class="libro3d" style="--c1:#8B5CFF;--c2:#3A1D7A"><small>Shakespeare</small><b>Hamlet</b></div>
-      <div class="libro3d" style="--c1:#E8A21E;--c2:#B04A1E"><small>Jane Austen</small><b>Orgullo y prejuicio</b></div>
-      <div class="libro3d" style="--c1:#35B6D6;--c2:#1B4F7A"><small>Victor Hugo</small><b>Los miserables</b></div>
-      <div class="libro3d" style="--c1:#F0603A;--c2:#A8203E"><small>Julio Verne</small><b>La vuelta al mundo en ochenta días</b></div>
-      <div class="libro3d" style="--c1:#22B58A;--c2:#0F5C5C"><small>Stevenson</small><b>La isla del tesoro</b></div>
-      <div class="libro3d" style="--c1:#C9A23A;--c2:#6B4B22"><small>Anónimo</small><b>Lazarillo de Tormes</b></div>
-      <div class="libro3d" style="--c1:#D6458F;--c2:#5E1F55"><small>Calderón</small><b>La vida es sueño</b></div>
-      <div class="libro3d" style="--c1:#4F7BE0;--c2:#2B2D7A"><small>Horacio Quiroga</small><b>Cuentos de amor, de locura y de muerte</b></div>
-      <div class="libro3d" style="--c1:#E0584A;--c2:#7A2230"><small>Galdós</small><b>Marianela</b></div>
+    <div class="cabeza rev">
+      <p class="rotulo">Primera colección · 50 libros</p>
+      <h2>Para empezar, cincuenta clásicos.</h2>
     </div>
+  </div>
+  <div class="estante" tabindex="0" aria-label="Algunos de los libros de la primera colección">
+    <div class="tapa t1"><small>Cervantes</small><b>Don Quijote de la Mancha</b></div>
+    <div class="tapa t2"><small>Conan Doyle</small><b>El sabueso de los Baskerville</b></div>
+    <div class="tapa t3"><small>Homero</small><b>Odisea</b></div>
+    <div class="tapa t4"><small>Shakespeare</small><b>Hamlet</b></div>
+    <div class="tapa t5"><small>Jane Austen</small><b>Orgullo y prejuicio</b></div>
+    <div class="tapa t6"><small>Victor Hugo</small><b>Los miserables</b></div>
+    <div class="tapa t1"><small>Julio Verne</small><b>La vuelta al mundo en ochenta días</b></div>
+    <div class="tapa t2"><small>Stevenson</small><b>La isla del tesoro</b></div>
+    <div class="tapa t3"><small>Anónimo</small><b>Lazarillo de Tormes</b></div>
+    <div class="tapa t4"><small>Calderón</small><b>La vida es sueño</b></div>
+    <div class="tapa t5"><small>Horacio Quiroga</small><b>Cuentos de amor, de locura y de muerte</b></div>
+    <div class="tapa t6"><small>Galdós</small><b>Marianela</b></div>
   </div>
 </section>
 
-<section id="mision">
-  <div class="envase">
-    <p class="rotulo rev">Por qué gratis</p>
-    <h2 class="rev">Los clásicos son de todos.</h2>
-    <p class="grande rev">Classics Hook es un proyecto independiente hecho en Balcarce, Argentina. Usamos obras de dominio público y les sumamos lo que hace falta para que vuelvan a leerse: reels y tiempo a medida. Cada libro dice de qué edición sale y quién la tradujo.</p>
-    <div class="cifras" style="margin-top:36px">
-      <div class="tarjeta cifra rev"><div class="n"><span class="cuenta" data-n="50">0</span></div><span>clásicos en la primera colección</span></div>
-      <div class="tarjeta cifra rev" style="--d:1"><div class="n"><span class="cuenta" data-n="4">0</span></div><span>tiempos de lectura por libro</span></div>
-      <div class="tarjeta cifra rev" style="--d:2"><div class="n"><span class="cuenta" data-n="0">0</span></div><span>anuncios</span></div>
-      <div class="tarjeta cifra rev" style="--d:3"><div class="n"><span class="cuenta" data-n="0">0</span></div><span>cuentas ni datos personales que pedirte</span></div>
+<section id="mision" class="fondo-2">
+  <div class="envase mision">
+    <div class="rev">
+      <p class="rotulo">El proyecto</p>
+      <h2>Los clásicos son de todos.</h2>
+    </div>
+    <div class="rev">
+      <p class="bajada">Classics Hook es un proyecto independiente hecho en Balcarce, Argentina. Usamos obras de dominio público y les sumamos lo que hace falta para que vuelvan a leerse: reels y tiempo a medida. Cada libro dice de qué edición sale y quién la tradujo.</p>
+      <dl class="cifras">
+        <div><dt>50</dt><dd>clásicos en la primera colección</dd></div>
+        <div><dt>4</dt><dd>tiempos de lectura por libro</dd></div>
+        <div><dt>100 %</dt><dd>palabras del autor en las lecturas</dd></div>
+      </dl>
     </div>
   </div>
 </section>
 
 <section id="preguntas">
-  <div class="envase">
-    <p class="rotulo rev">Preguntas</p>
-    <h2 class="rev">Lo que más nos preguntan.</h2>
+  <div class="envase faq-caja">
+    <div class="cabeza rev">
+      <p class="rotulo">Preguntas</p>
+      <h2>Lo que más nos preguntan.</h2>
+    </div>
     <div class="faq rev">
-      <details><summary>¿Es gratis de verdad?</summary><p>Sí. No hay suscripción, ni compras dentro de la app, ni anuncios. Son obras de dominio público y queremos que cualquiera pueda leerlas.</p></details>
       <details><summary>¿Las lecturas cortas son resúmenes?</summary><p>No. Las lecturas tranquila, rápida y relámpago eligen oraciones del libro y las dejan tal cual: son palabras del autor, no nuestras. El Resumen y la Contratapa sí son textos nuestros, y la app lo indica.</p></details>
-      <details><summary>¿Tiene audio o voz?</summary><p>Por ahora no. Primero queremos que leer sea lo mejor posible; el audio queda para más adelante y, si llega, lo vamos a decir con claridad.</p></details>
+      <details><summary>¿Cuesta algo?</summary><p>No. Leer en Classics Hook es gratis: no hay suscripción ni compras dentro de la app.</p></details>
+      <details><summary>¿Tiene audio o voz?</summary><p>Por ahora no. Primero queremos que leer sea lo mejor posible; el audio queda para más adelante.</p></details>
       <details><summary>¿Los videos son reales?</summary><p>Son piezas ilustrativas creadas con herramientas de inteligencia artificial para invitarte al libro. Cada reel lo indica.</p></details>
-      <details><summary>¿Qué datos guardan de mí?</summary><p>La app no pide cuenta ni datos personales. Tu progreso, biblioteca y marcadores quedan en tu teléfono. El detalle está en la <a href="privacidad.html">política de privacidad</a>.</p></details>
+      <details><summary>¿Necesito crear una cuenta?</summary><p>No. Tu progreso, biblioteca y marcadores quedan en tu teléfono. El detalle está en la <a href="privacidad.html">política de privacidad</a>.</p></details>
       <details><summary>¿En qué idiomas está?</summary><p>La primera versión es en español. Estamos preparando inglés y portugués.</p></details>
       <details><summary>Soy autor independiente, ¿puedo participar?</summary><p>Estamos armando un espacio para eso. Escribinos a <a href="mailto:autores@classicshook.com">autores@classicshook.com</a>.</p></details>
     </div>
@@ -195,14 +215,14 @@
 </section>
 
 <section class="cierre">
-  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div><div class="grano" aria-hidden="true"></div>
+  <div class="resplandor" aria-hidden="true"></div>
   <div class="envase">
-    <h2 class="rev">Tu próximo clásico <span class="grad">dura lo que vos quieras.</span></h2>
-    <div class="acciones rev"><a class="btn" href="mailto:contacto@classicshook.com?subject=Avisame%20cuando%20salga%20la%20app">Avisame cuando salga →</a></div>
-    <div class="desliza" role="group" aria-label="Deslizá para volver a elegir tu tiempo" style="margin:30px auto 0;opacity:1;animation:none">
+    <h2 class="rev">Tu próximo clásico<br><em>dura lo que vos quieras.</em></h2>
+    <div class="acciones rev"><a class="btn" href="mailto:contacto@classicshook.com?subject=Avisame%20cuando%20salga%20la%20app">Avisame cuando salga</a></div>
+    <div class="desliza rev" role="group" aria-label="Deslizá para volver a elegir tu tiempo">
       <div class="relleno"></div>
       <div class="texto">Deslizá para elegir tu tiempo</div>
-      <button class="perilla" type="button" aria-label="Volver arriba (deslizá o presioná Enter)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button class="perilla" type="button" aria-label="Volver arriba (deslizá o presioná Enter)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     </div>
   </div>
 </section>
@@ -211,8 +231,8 @@
 <footer class="pie">
   <div class="envase">
     <div class="pie-grilla">
-      <div><a class="marca" href="/"><img src="icono.svg" alt="" width="36" height="36">Classics <span>Hook</span></a><p style="margin-top:14px;max-width:26em">Los clásicos, a tu tiempo. Hecho en Balcarce, Argentina.</p></div>
-      <div><h4>Producto</h4><ul><li><a href="#como">Cómo funciona</a></li><li><a href="#tiempo">Tu tiempo</a></li><li><a href="#coleccion">Colección</a></li><li><a href="#preguntas">Preguntas</a></li></ul></div>
+      <div class="pie-marca"><a class="marca" href="/"><img src="icono.svg" alt="" width="30" height="30">Classics <span>Hook</span></a><p>Los clásicos, a tu tiempo. Hecho en Balcarce, Argentina.</p></div>
+      <div><h4>Producto</h4><ul><li><a href="#como">Cómo funciona</a></li><li><a href="#tiempo">Cada libro</a></li><li><a href="#coleccion">Colección</a></li><li><a href="#preguntas">Preguntas</a></li></ul></div>
       <div><h4>Legal</h4><ul><li><a href="privacidad.html">Privacidad</a></li><li><a href="terminos.html">Términos de uso</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="derechos-de-autor.html">Derechos de autor</a></li><li><a href="creditos.html">Créditos y licencias</a></li></ul></div>
       <div><h4>Contacto</h4><ul><li><a href="soporte.html">Ayuda y soporte</a></li><li><a href="mailto:contacto@classicshook.com">contacto@classicshook.com</a></li><li><a href="mailto:autores@classicshook.com">autores@classicshook.com</a></li><li><a href="mailto:prensa@classicshook.com">prensa@classicshook.com</a></li></ul></div>
     </div>
