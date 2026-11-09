@@ -21,8 +21,8 @@
   /* portada: el tiempo que tenés decide qué oraciones quedan en la página */
   const rH = $('#rangoH'), vivo = $('#vivo');
   if (rH && vivo) {
-    const V = [{ m: 33, n: 'Relámpago', s: 'Lo imprescindible', t: '33 min', pc: 10.5 },
-               { m: 78, n: 'Rápida', s: 'Un cuarto, sin perder la trama', t: '1 h 18', pc: 25 },
+    const V = [{ m: 33, n: 'Relámpago', s: 'Las escenas clave', t: '33 min', pc: 10.5 },
+               { m: 78, n: 'Rápida', s: 'Un cuarto del libro', t: '1 h 18', pc: 25 },
                { m: 156, n: 'Tranquila', s: 'La mitad del libro', t: '2 h 36', pc: 50 },
                { m: 311, n: 'Original', s: 'El libro completo', t: '5 h 11', pc: 100 }];
     const spans = $$('.texto-libro span', vivo), btns = $$('.selector-v button', vivo);
@@ -48,9 +48,19 @@
     poner(+rH.value);
   }
 
-  /* cómo funciona: el teléfono cambia con cada paso (solo en pantallas anchas) */
+  /* cómo funciona: el teléfono cambia con cada paso; en el celular pasa solo */
   const pasos = $('.pasos');
-  if (pasos) {
+  if (pasos && matchMedia('(max-width:900px)').matches) {
+    const ps = $$('.paso', pasos), pal = $$('.lector span', pasos); let n = 1, t;
+    const ir = k => {
+      n = k; pasos.dataset.paso = k; ps.forEach(x => x.classList.toggle('on', x.dataset.n === String(k)));
+      pal.forEach((w, i) => { w.classList.toggle('dicho', k === 3); w.style.transitionDelay = k === 3 && !quieto ? i * 0.25 + 's' : '0s'; });
+    };
+    const andar = () => { clearInterval(t); if (!quieto) t = setInterval(() => ir(n % 3 + 1), 3200); };
+    ps.forEach(x => x.addEventListener('click', () => { ir(+x.dataset.n); andar(); }));
+    new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? andar() : clearInterval(t))).observe(pasos);
+    ir(1);
+  } else if (pasos) {
     const ps = $$('.paso', pasos), pal = $$('.lector span', pasos); let tl;
     const leer = () => {
       clearInterval(tl); pal.forEach(w => w.classList.remove('dicho'));
