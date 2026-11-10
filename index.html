@@ -66,13 +66,13 @@ header{position:sticky;top:0;z-index:40;background:rgba(244,237,225,.84);backdro
 header .envase{display:flex;align-items:center;justify-content:space-between;height:var(--cab)}
 .marca{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:-.01em}
 .marca img{width:32px;height:32px;border-radius:8px}
-nav{display:flex;align-items:center;gap:2px}
-nav a{padding:8px 12px;border-radius:999px;color:var(--tinta2);font-size:14px;transition:.2s}
-nav a:hover{color:var(--tinta);background:rgba(31,27,23,.06)}
-@media (max-width:720px){nav a:not(.btn){display:none}}
+header nav{display:flex;align-items:center;gap:2px}
+header nav a{padding:8px 12px;border-radius:999px;color:var(--tinta2);font-size:14px;transition:.2s}
+header nav a:hover{color:var(--tinta);background:rgba(31,27,23,.06)}
+@media (max-width:720px){header nav a:not(.btn){display:none}}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:999px;background:var(--verde);color:#fff;font-weight:500;font-size:14.5px;transition:transform .3s var(--ease),background .2s;white-space:nowrap}
 .btn:hover{transform:translateY(-1px);background:var(--verde2)}
-nav .btn{padding:8px 14px;font-size:13px}
+header nav .btn{padding:8px 14px;font-size:13px}
 .btn.borde{background:transparent;color:var(--tinta);border:1px solid var(--line)}
 .btn.borde:hover{background:rgba(31,27,23,.05)}
 
@@ -119,13 +119,41 @@ nav .btn{padding:8px 14px;font-size:13px}
   .carta.vuelta:hover .cuerpo{transform:rotateY(180deg) translateY(-6px)}
 }
 
-/* cómo funciona: tres líneas, como una receta */
-.receta{display:grid;gap:0;border-top:1px solid var(--line)}
-.receta>div{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.receta .n{font-family:var(--serif);font-style:italic;font-size:30px;line-height:1;color:var(--nar)}
-.receta h3{font-size:17px;font-weight:500;margin-bottom:3px}
-.receta p{color:var(--tinta2);font-size:14px}
-@media (min-width:900px){.receta{grid-template-columns:repeat(3,1fr);gap:36px;border-top:0}.receta>div{grid-template-columns:1fr;border-top:1px solid var(--line);border-bottom:0;padding-top:20px;gap:8px}}
+/* cómo funciona: tres escenas en miniatura (reel, contratapa, tiempo) */
+.escenas{display:grid;gap:16px}
+.escena{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:center;min-width:0}
+.escena h3{font-size:17px;font-weight:500;margin-bottom:4px;line-height:1.25}
+.escena p{color:var(--tinta2);font-size:14px}
+.vista{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:#1b1612;box-shadow:0 16px 30px -18px rgba(31,27,23,.55),0 0 0 1px rgba(31,27,23,.08)}
+.vista img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vista.reel::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),transparent 40%,rgba(20,16,12,.8));z-index:1}
+.vista.reel .play{position:absolute;left:50%;top:44%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:rgba(251,247,239,.92);z-index:2;display:grid;place-items:center}
+.vista.reel .play::after{content:"";width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent var(--verde);margin-left:2px}
+.vista.reel .pie{position:absolute;left:9px;right:9px;bottom:8px;z-index:2;color:#fff;display:flex;flex-direction:column;gap:1px}
+.vista.reel .pie small{font-size:7px;letter-spacing:.08em;text-transform:uppercase;opacity:.85;font-weight:500}
+.vista.reel .pie b{font-family:var(--serif);font-weight:600;font-size:11px;line-height:1.1;letter-spacing:-.01em}
+.vista.dorso img{filter:brightness(.55) saturate(.8)}
+.vista .tarjeta{position:absolute;left:9%;right:9%;top:9%;bottom:9%;border-radius:8px;padding:9px 8px;display:flex;flex-direction:column;gap:3px;transform:rotate(-4deg);transform-origin:center;box-shadow:0 10px 22px -10px rgba(0,0,0,.6)}
+.vista.dorso .tarjeta{background:var(--blanco);color:var(--tinta);background-image:linear-gradient(180deg,rgba(224,85,42,.08),transparent 30%);border:1px solid var(--line)}
+.vista .tarjeta small{font-size:6.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--nar)}
+.vista .tarjeta b{font-family:var(--serif);font-weight:600;font-size:10.5px;line-height:1.1;letter-spacing:-.01em}
+.vista .tarjeta i{font-style:normal;font-size:6.5px;color:var(--tinta3)}
+.vista .tarjeta p{font-size:6.5px;line-height:1.4;color:var(--tinta2);margin-top:2px;overflow:hidden;flex:1;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+.vista.tiempo{background:var(--papel2);background-image:radial-gradient(70% 60% at 100% 100%,rgba(30,91,72,.25),transparent)}
+.vista.tiempo .tarjeta{transform:none;left:8%;right:8%;top:8%;bottom:8%;padding:8px 7px;background:var(--verde);color:var(--papel);border:0;gap:1px;justify-content:center;box-shadow:0 12px 24px -12px rgba(22,63,50,.7)}
+.vista.tiempo .tarjeta small{color:rgba(244,237,225,.7)}
+.vista.tiempo .tarjeta b{font-size:16px}
+.vista.tiempo .tarjeta em{font-style:normal;font-family:var(--serif);font-weight:600;font-size:12px;color:#FFB08C;letter-spacing:-.01em}
+.vista.tiempo .pista{margin:6px 0 4px}
+.vista.tiempo .pista .linea{display:block;position:relative;height:2px;border-radius:2px;background:linear-gradient(90deg,#FFB08C 50%,rgba(244,237,225,.3) 50%);margin-bottom:3px}
+.vista.tiempo .pista .linea i{position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--papel);border:1.5px solid #FFB08C;box-sizing:border-box}
+.vista.tiempo .pista .nombres{display:flex;justify-content:space-between;font-size:5.5px;letter-spacing:.02em;color:rgba(244,237,225,.65)}
+.vista.tiempo .pista .nombres span.on{color:#fff;font-weight:600}
+.vista.tiempo .tarjeta p{font-size:6.5px;color:rgba(244,237,225,.85);margin:0;flex:none;-webkit-mask-image:none;mask-image:none;line-height:1.35}
+.vista.tiempo .tarjeta p b{display:inline;font:inherit;font-weight:600;color:#fff}
+@media (max-width:899px){#como{padding-top:30px}#como .cabeza{margin-bottom:18px}}
+@media (min-width:600px){.escena{grid-template-columns:120px minmax(0,1fr);gap:22px}}
+@media (min-width:900px){.escenas{grid-template-columns:repeat(3,1fr);gap:40px;border-top:1px solid var(--line);padding-top:28px}.escena{grid-template-columns:132px minmax(0,1fr);gap:18px;align-items:center}.vista{border-radius:16px}.escena h3{font-size:18px}}
 
 /* tres formas: el grosor del libro */
 .formas{background:var(--papel2)}
@@ -201,30 +229,50 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 .coleccion .nota b{color:var(--tinta);font-weight:500}
 
 /* avisame */
-.aviso .caja{background:var(--tinta);color:var(--papel);border-radius:22px;padding:clamp(24px,4vw,48px);display:grid;gap:20px;position:relative;overflow:hidden}
-.aviso .caja::after{content:"";position:absolute;right:-80px;bottom:-120px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(30,91,72,.7),transparent 65%)}
+.aviso .caja{background:var(--tinta);color:var(--papel);border-radius:22px;padding:clamp(24px,4vw,48px);display:grid;gap:22px;position:relative;isolation:isolate;clip-path:inset(0 round 22px) /* recorta el círculo decorativo sin crear un contenedor desplazable (overflow:hidden se desplazaba al enfocar el input) */}
+.aviso .caja>*{min-width:0;position:relative;z-index:1}
+.aviso .caja::after{content:"";position:absolute;right:0;bottom:0;width:300px;max-width:100%;height:240px;background:radial-gradient(circle at 75% 100%,rgba(30,91,72,.7),transparent 62%);z-index:0;pointer-events:none}
 .aviso .rotulo{color:#8FD3B8}
 .aviso h2 em{color:#8FD3B8}
 .aviso .bajada{color:rgba(244,237,225,.7)}
-.form{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.form{display:flex;flex-direction:column;gap:10px;position:relative}
 .form label{font-size:13px;color:rgba(244,237,225,.7)}
-.form .btn{align-self:flex-start}
 .form .campo{display:flex;gap:6px;padding:6px;border-radius:999px;background:rgba(244,237,225,.08);border:1px solid rgba(244,237,225,.18)}
 .form .campo:focus-within{border-color:#8FD3B8}
-.form input{flex:1;min-width:0;background:none;border:0;color:var(--papel);font:inherit;padding:8px 14px;outline:none}
+/* el input no impone su ancho intrínseco (unos 20 caracteres): flex-basis 0 y width 0 */
+.form input{flex:1 1 0;width:0;min-width:0;background:none;border:0;color:var(--papel);font:inherit;padding:8px 14px;outline:none}
 .form input::placeholder{color:rgba(244,237,225,.45)}
-.form small{color:rgba(244,237,225,.55);font-size:12px}
+.form input:disabled{opacity:.5}
 .form .campo .btn{flex:none}
-.form .estado{min-height:1.3em;font-size:14px;color:#8FD3B8}
+.form small{color:rgba(244,237,225,.55);font-size:12px;line-height:1.45}
+.form small a{text-decoration:underline;text-underline-offset:2px}
+.form .estado{font-size:14px;color:#8FD3B8}
+.form .estado:empty{display:none}
 .form .estado.error{color:#F2B8A2}
 .form .estado.error a{text-decoration:underline}
+@media (max-width:479px){
+  .form .campo{flex-direction:column;gap:8px;padding:0;background:none;border:0}
+  .form input{width:100%;flex:none;padding:13px 16px;border-radius:999px;background:rgba(244,237,225,.08);border:1px solid rgba(244,237,225,.18)}
+  .form input:focus{border-color:#8FD3B8}
+  .form .campo .btn{width:100%;padding:13px 20px}
+}
+.aviso{padding-top:0}
+@media (max-width:899px){.aviso .caja{gap:18px}}
 @media (min-width:900px){.aviso .caja{grid-template-columns:1fr 1fr;gap:56px;align-items:center}}
 
-footer{padding:22px 0 36px;color:var(--tinta3);font-size:12.5px}
-footer .envase{display:flex;flex-direction:column;gap:10px}
-footer .fila{display:flex;flex-wrap:wrap;gap:6px 16px;flex:none}
-footer a:hover{color:var(--tinta)}
-@media (min-width:900px){footer .envase{flex-direction:row;justify-content:space-between;align-items:center}}
+/* pie */
+footer{padding:26px 0 40px;color:var(--tinta3);font-size:12.5px;border-top:1px solid var(--line);margin-top:8px}
+footer .envase{display:grid;gap:18px}
+.pie-marca{display:flex;align-items:center;gap:10px;color:var(--tinta)}
+.pie-marca img{width:28px;height:28px;border-radius:7px}
+.pie-marca b{display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:-.01em;line-height:1.15}
+.pie-marca span{display:block;color:var(--tinta3);font-size:12px}
+.pie-enlaces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}
+.pie-enlaces a{color:var(--tinta2);padding:2px 0}
+.pie-enlaces a:hover{color:var(--tinta)}
+.pie-copy{font-size:12px;line-height:1.5;padding-top:14px;border-top:1px solid var(--line)}
+@media (min-width:600px){.pie-enlaces{display:flex;flex-wrap:wrap;gap:6px 18px}}
+@media (min-width:900px){footer .envase{grid-template-columns:1fr auto;align-items:center}.pie-copy{grid-column:1/-1}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -280,11 +328,20 @@ footer a:hover{color:var(--tinta)}
 
 <section id="como">
   <div class="envase">
-    <div class="cabeza"><p class="rotulo">Cómo funciona</p><h2>Tres pasos, <em>sin apuro.</em></h2></div>
-    <div class="receta">
-      <div><span class="n">1</span><div><h3>Te cruzás con un reel</h3><p>Cada libro tiene cuatro, cortos y verticales. Pasás de largo o te quedás. Si uno te tienta, tocás.</p></div></div>
-      <div><span class="n">2</span><div><h3>Leés la contratapa</h3><p>Das vuelta la carta y aparece un texto breve, sin spoilers, como el de atrás de un libro. Para decidir con calma.</p></div></div>
-      <div><span class="n">3</span><div><h3>Decís cuánto tiempo tenés</h3><p>Tus minutos, tus días. Elegís Original, Lite o Story y la app te dice cuánto te lleva y cuándo lo terminás.</p></div></div>
+    <div class="cabeza"><p class="rotulo">Cómo funciona</p><h2>Mirás, das vuelta, <em>elegís.</em></h2></div>
+    <div class="escenas">
+      <div class="escena">
+        <div class="vista reel" aria-hidden="true"><img src="media/isla.jpg" alt="" width="270" height="480" loading="lazy"><span class="play"></span><span class="pie"><small>Reel 2 de 4</small><b>La isla del tesoro</b></span></div>
+        <div><h3>Te cruzás con un reel</h3><p>Cada libro tiene cuatro, cortos y verticales. Pasás de largo o te quedás. Si uno te tienta, tocás.</p></div>
+      </div>
+      <div class="escena">
+        <div class="vista dorso" aria-hidden="true"><img src="media/isla.jpg" alt="" width="270" height="480" loading="lazy"><div class="tarjeta"><small>Contratapa</small><b>La isla del tesoro</b><i>Robert Louis Stevenson</i><p>Un viejo marino de piel curtida y una cicatriz de sable llega a la posada del «Almirante Benbow» y se queda. Bebe ron, canta canciones de piratas y espera a un marino con una sola pierna. Mientras el miedo se instala en la casa, un cofre que nadie vio abierto guarda un secreto.</p></div></div>
+        <div><h3>Das vuelta la carta</h3><p>Atrás está la contratapa: un texto breve, sin spoilers, como el de atrás de un libro. Para decidir con calma.</p></div>
+      </div>
+      <div class="escena">
+        <div class="vista tiempo" aria-hidden="true"><div class="tarjeta"><small>Para leer en</small><b>Lite</b><em>3 h 40</em><div class="pista"><span class="linea"><i></i></span><span class="nombres"><span>Story</span><span class="on">Lite</span><span>Original</span></span></div><p>Terminás <b>el 21 de noviembre</b>.</p></div></div>
+        <div><h3>Decís cuánto tiempo tenés</h3><p>Tus minutos, tus días. Elegís Original, Lite o Story y la app te dice cuánto te lleva y cuándo lo terminás.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -349,8 +406,7 @@ footer a:hover{color:var(--tinta)}
         <div class="campo"><input id="correo" name="correo" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="tucorreo@ejemplo.com" required><button class="btn" type="submit" id="enviar">Avisame</button></div>
         <div class="trampa" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="sitio">Sitio web</label><input id="sitio" name="sitio" type="text" tabindex="-1" autocomplete="off"></div>
         <p class="estado" id="estadoAviso" role="status" aria-live="polite"></p>
-        <small>Usamos tu correo solo para avisarte del lanzamiento. Podés pedir que lo borremos. <a href="privacidad.html" style="text-decoration:underline">Privacidad</a></small>
-        <small>Android y iPhone · Hecho en Balcarce, Argentina</small>
+        <small>Usamos tu correo solo para avisarte del lanzamiento. Podés pedir que lo borremos cuando quieras. <a href="privacidad.html">Privacidad</a></small>
       </form>
     </div>
   </div>
@@ -359,8 +415,9 @@ footer a:hover{color:var(--tinta)}
 
 <footer>
   <div class="envase">
-    <span>© 2026 Classics Hook · Balcarce, Argentina · Textos de dominio público</span>
-    <div class="fila"><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos de uso</a><a href="cookies.html">Cookies</a><a href="derechos-de-autor.html">Derechos de autor</a><a href="creditos.html">Créditos y licencias</a><a href="soporte.html">Ayuda y soporte</a></div>
+    <div class="pie-marca"><img src="logo.svg" alt="" width="28" height="28"><div><b>Classics Hook</b><span>Muy pronto en Android y iPhone</span></div></div>
+    <nav class="pie-enlaces" aria-label="Legales y ayuda"><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos de uso</a><a href="cookies.html">Cookies</a><a href="derechos-de-autor.html">Derechos de autor</a><a href="creditos.html">Créditos y licencias</a><a href="soporte.html">Ayuda y soporte</a></nav>
+    <p class="pie-copy">© 2026 Classics Hook · Hecho en Balcarce, Argentina · Textos de dominio público</p>
   </div>
 </footer>
 
